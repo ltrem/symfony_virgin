@@ -1,0 +1,119 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+	<div class="col-sm-10 col-sm-offset-1">
+		<div class="row well">
+            <div class="col-xs-12">
+                <h3>Entrez vos informations personnel</h3>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.firstname, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.firstname) }}
+                            {{ form_widget(form.client.firstname, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.lastname, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.lastname) }}
+                            {{ form_widget(form.client.lastname, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.address, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.address) }}
+                            {{ form_widget(form.client.address, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.phoneCell, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.phoneCell) }}
+                            {{ form_widget(form.client.phoneCell, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.phoneHome, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.phoneHome) }}
+                            {{ form_widget(form.client.phoneHome, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.phoneWork, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.phoneWork) }}
+                            {{ form_widget(form.client.phoneWork, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_row(form.client.birthdate) }}
+                            {#{{ form_errors(form.client.birthdate) }}#}
+                            {#{{ form_widget(form.client.birthdate, { 'attr': {'class': 'form-control'} }) }}#}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.gender, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.gender) }}
+                            {{ form_widget(form.client.gender, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="col-xs-12">
+
+                <h3>Votre profil</h3>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.username, null, { 'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.username) }}
+                        {{ form_widget(form.username, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.email, null, { 'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.plainPassword.first, null, { 'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        {{ form_label(form.plainPassword.second, null, { 'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_errors(form.plainPassword.second) }}
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+
+			</div>
+		</div>
+
+        {{ form_rest(form) }}
+        <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'registration.submit_and_appointment'|trans }}" />
+
+	</div>
+
+{{ form_end(form) }}

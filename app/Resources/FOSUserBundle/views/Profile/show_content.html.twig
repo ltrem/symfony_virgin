@@ -1,0 +1,103 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{#<div class="fos_user_user_show">#}
+    {#<p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>#}
+    {#<p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>#}
+{#</div>#}
+
+<div class="col-sm-10 col-sm-offset-1">
+    <div class="row well">
+        <div class="col-xs-12">
+            <h3>Vos informations personnel</h3>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.firstname'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.firstname }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.lastname'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.lastname }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.address'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.address }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.phoneCell'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.phoneCell }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.phoneHome'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.phoneHome }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.phoneWork'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.phoneWork }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.birthdate'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.birthdate|date('Y-m-d') }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>{{ 'general.info.gender'|trans({}, 'messages') }}</label>
+                    <br />
+                    {{ user.client.gender }}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12">
+
+            <h3>Votre profil</h3>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Utilisateur</label>
+                    <br />
+                    {{ user.username }}
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Courriel</label>
+                    <br />
+                    {{ user.email }}
+                </div>
+            </div>
+
+        </div>
+
+        <a href="{{ path('fos_user_profile_edit')}}" class="btn btn-default">{{ 'profile.edit.link'|trans }}</a>
+
+    </div>
+</div>

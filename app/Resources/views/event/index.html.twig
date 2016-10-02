@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Prendre un rendez-vous</h1>
+
+    <div class="row">
+
+
+        <div class="col-sm-8">
+
+            <h2>Sélectionner une plage horaire</h2>
+
+            {% include 'ADesignsCalendarBundle::calendar.html.twig' %}
+
+        </div>
+
+        <div class="col-sm-4">
+
+            {% if is_granted('ROLE_CLIENT') %}
+
+                <div class="client_event">
+                    {{ form_start(form) }}
+
+                        {{ form_widget(form) }}
+                        {#<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>#}
+                        <input id="form_submit" type="submit" class="btn btn-primary" value="Confirmez mon rendez-vous" />
+
+                    {{ form_end(form) }}
+                </div>
+
+            {% endif %}
+
+
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            {% if is_granted('ROLE_ADMIN') %}
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Starttime</th>
+                        <th>Endtime</th>
+                        {#<th>Actions</th>#}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in events %}
+
+                        <tr>
+                            <th scope="row"><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
+                            <td>{{ event.name }}</td>
+                            <td>{{ event.startTime|date('Y-m-d') }}</td>
+                            <td>{{ event.endTime|date('Y-m-d') }}</td>
+                            <td>
+                                <a href="{{ path('event_show', { 'id': event.id }) }}" class="btn btn-xs btn-success">View</a>
+                                <a href="{{ path('event_edit', { 'id': event.id }) }}" class="btn btn-xs btn-default">Edit</a>
+                                <a href="{{ path('event_delete', { 'id': event.id }) }}" class="btn btn-xs btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('event_new') }}">Create a new entry</a>
+                    </li>
+                </ul>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+    {#{{ form_start(form) }}#}
+    {##}
+    {#<div id="fullCalModal" class="modal fade">#}
+        {#<div class="modal-dialog">#}
+            {#<div class="modal-content">#}
+                {#<div class="modal-header">#}
+                    {#<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>#}
+                    {#<h4 id="modalTitle" class="modal-title">Hello</h4>#}
+                {#</div>#}
+                {#<div id="modalBody" class="modal-body">#}
+
+                    {#{{ form_widget(form) }}#}
+
+                {#</div>#}
+                {#<div class="modal-footer">#}
+                    {#<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>#}
+                    {#<input type="submit" class="btn btn-primary" value="Create" />#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+
+    {#{{ form_end(form) }}#}
+
+{% endblock %}
+
+    {% block javascripts %}
+        <script>
+
+//            $('#form_submit').click(function(e){
+//                e.preventDefault();
+//                $(this).closest('form').find('*').prop("disabled", false);
+//                $(this).closest('form').submit();
+//            });
+
+        </script>
+    {% endblock %}
+
+    {% block documentready %}
+
+        {#$('input[type=datetime]').prop("disabled", true);#}
+
+        $(".form_datetime").datetimepicker({
+        bootcssVer: 3,
+        format: 'yyyy-mm-dd hh:ii',
+        autoclose: true,
+        minuteStep: 60,
+        minView: 'day',
+        initialDate: 'today',
+        todayHighlight: true,
+        {#todayBtn: true,#}
+        {#pickerPosition: "bottom-left",#}
+        })
+        .on('changeDate', function(ev){
+            endtime = moment(ev.date).add(1, 'hour').format('YYYY-MM-DD HH:mm');
+            $('.client_event #event_endTime').val(endtime);
+        });
+    {% endblock %}

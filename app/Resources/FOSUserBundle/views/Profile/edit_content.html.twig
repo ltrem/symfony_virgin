@@ -1,0 +1,87 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    <div class="col-sm-10 col-sm-offset-1">
+        <div class="row well">
+            <div class="col-xs-12">
+                <div class="row">
+                    <h3 class="col-sm-12">Entrez vos informations personnel</h3>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.firstname, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.firstname) }}
+                            {{ form_widget(form.client.firstname, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.lastname, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.lastname) }}
+                            {{ form_widget(form.client.lastname, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.address, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.address) }}
+                            {{ form_widget(form.client.address, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.phoneCell, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.phoneCell) }}
+                            {{ form_widget(form.client.phoneCell, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.phoneHome, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.phoneHome) }}
+                            {{ form_widget(form.client.phoneHome, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.phoneWork, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.phoneWork) }}
+                            {{ form_widget(form.client.phoneWork, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_row(form.client.birthdate) }}
+                            {#{{ form_errors(form.client.birthdate) }}#}
+                            {#{{ form_widget(form.client.birthdate, { 'attr': {'class': 'form-control'} }) }}#}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form_label(form.client.gender, null, { 'label_attr': {'class': 'control-label'}}) }}
+                            {{ form_errors(form.client.gender) }}
+                            {{ form_widget(form.client.gender, { 'attr': {'class': 'form-control'} }) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+
+                <h3 class="col-sm-12">Votre profil</h3>
+
+                {{ form_rest(form) }}
+            </div>
+
+        </div>
+
+        <input class="btn btn-lg btn-primary btn-block" type="submit" id="_submit" name="_submit" value="{{ 'profile.edit.submit'|trans }}" />
+
+    </div>
+{{ form_end(form) }}

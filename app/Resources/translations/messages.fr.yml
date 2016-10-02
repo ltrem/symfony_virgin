@@ -1,0 +1,17 @@
+general:
+    info:
+        firstname: 'Prénom'
+        lastname: "Nom"
+        address: "Adresse"
+        phoneCell: "Téléphone (cellulaire)"
+        phoneWork: "Téléphone (travail)"
+        phoneHome: "Téléphone (maison)"
+        birthdate: "Date de naissance"
+        gender: "Genre"
+
+event:
+    form:
+        name: 'Nom'
+        startTime: 'Date et heure du rendez-vous'
+        endTime: 'Fin'
+        categories: 'Catégories'
